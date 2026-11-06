@@ -1,0 +1,22 @@
+{
+  "_comment": "The Gulf portals the board knows how to draw, one row each, and how to find their block markers (dashboard/earned.py reads the markers from here for `status`). A portal gets its row only once dashboard/earned.py says it earned it, and only a portal listed in earned.QUOTAS can. A portal is any script that follows the portal contract: --dry-run / --live / --limit, exit codes 0 / 44 cap / 42 needs you / 47 throttled / 48 challenge / 3 not armed / 1 error, state/<key>_progress.json, and an `applications` table whose verified=1 rows were confirmed in the site's own Applied list. Paths are relative to job-tracker. No emails, phone numbers or profile names belong in this file: the repo is public.",
+  "portals": [
+    {
+      "key": "naukrigulf",
+      "name": "NaukriGulf",
+      "identity": "Data Platform Engineer",
+      "db": "state/naukrigulf_apply.db",
+      "progress": "state/naukrigulf_progress.json",
+      "log": "logs/naukrigulf_apply.log",
+      "cap": 25,
+      "markers": {
+        "login": "state/NAUKRIGULF_LOGIN_REQUIRED",
+        "throttled": "state/NAUKRIGULF_THROTTLED",
+        "challenge": "state/NAUKRIGULF_CHALLENGE"
+      },
+      "armed": {"env": "NAUKRIGULF_APPLY_LIVE", "kind": "flag"},
+      "setup_command": "naukrigulf_apply.cmd setup",
+      "shortlist": "state/naukrigulf_shortlist.json"
+    }
+  ]
+}

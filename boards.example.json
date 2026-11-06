@@ -1,0 +1,40 @@
+{
+  "boards": [
+    {
+      "id": "instahyre",
+      "name": "Instahyre",
+      "repo": "https://github.com/your-org/instahyre-autoapply",
+      "path": "../instahyre-autoapply",
+      "status": "state/status.json",
+      "applications": "state/applications.jsonl",
+      "enabled": true
+    },
+    {
+      "id": "naukri",
+      "name": "Naukri",
+      "repo": "https://github.com/your-org/naukri-autoapply",
+      "path": "../naukri-autoapply",
+      "status": "state/status.json",
+      "applications": "state/applications.jsonl",
+      "enabled": true
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn",
+      "repo": "https://github.com/your-org/linkedin-autoapply",
+      "path": "../linkedin-autoapply",
+      "status": "state/status.json",
+      "applications": "state/applications.jsonl",
+      "enabled": true
+    },
+    {
+      "id": "gulf",
+      "name": "NaukriGulf",
+      "repo": "https://github.com/your-org/gulf-autoapply",
+      "path": "../gulf-autoapply",
+      "status": "state/status.json",
+      "applications": "state/applications.jsonl",
+      "enabled": true
+    }
+  ]
+}

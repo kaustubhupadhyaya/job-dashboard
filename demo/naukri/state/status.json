@@ -1,0 +1,6 @@
+{
+  "accounts": {
+    "1": {"state": "running", "last_run": "2026-11-06T09:31:00+05:30", "applied_today": 18, "daily_cap": 50, "message": "Demo data."},
+    "2": {"state": "resting", "last_run": "2026-11-06T08:55:00+05:30", "applied_today": 7, "daily_cap": 50, "message": "Demo data."}
+  }
+}

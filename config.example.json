@@ -1,0 +1,16 @@
+{
+  "_comment": "Copy to config.json to read a live setup. With no config.json the dashboard reads demo/ automatically. Every root may also come from JOB_DASHBOARD_JT, JOB_DASHBOARD_NK and JOB_DASHBOARD_LI.",
+  "demo": false,
+  "job_tracker": "~/GitHub/job-tracker",
+  "naukri": "~/GitHub/Naukri-autoapply-bot-for-claude",
+  "linkedin": "~/GitHub/FORKED_Auto_job_applier_linkedIn",
+  "boards": "boards.json",
+  "port": 8787,
+  "stall_minutes": {
+    "linkedin": 30,
+    "naukri1": 30,
+    "naukri2": 15
+  },
+  "refresh_window": ["09:00", "09:55"],
+  "start_command": "python -m dashboard.server"
+}

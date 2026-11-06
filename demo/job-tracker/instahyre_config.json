@@ -1,0 +1,4 @@
+{
+  "_comment": "Demo limit only. A live checkout reads its own instahyre_config.json.",
+  "daily_cap": 30
+}

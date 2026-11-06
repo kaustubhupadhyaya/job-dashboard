@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile
+        run: python -m py_compile dashboard/*.py portal_kit/*.py track_job_applications.py
+
+      - name: Start the demo dashboard
+        run: |
+          python -m dashboard.server > server.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8787/api/boards > boards.json; then
+              break
+            fi
+            sleep 1
+          done
+          cat server.log
+
+      - name: Check /api/boards
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("boards.json").read_text())
+          assert data["boards"], "no demo boards"
+          assert all("id" in b for b in data["boards"])
+          print(f"{len(data['boards'])} demo boards returned")
+          PY

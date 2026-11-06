@@ -1,0 +1,33 @@
+{
+  "boards": [
+    {
+      "id": "gulf",
+      "name": "Gulf portal (demo)",
+      "repo": "https://github.com/example/gulf-autoapply",
+      "path": "job-tracker",
+      "status": "state/gulf_status.json",
+      "applications": "state/gulf_applications.jsonl",
+      "control": "state/gulf_control.json",
+      "enabled": true
+    },
+    {
+      "id": "naukri",
+      "name": "Naukri (demo)",
+      "repo": "https://github.com/example/naukri-autoapply",
+      "path": "naukri",
+      "status": "state/status.json",
+      "applications": "state/applications.jsonl",
+      "enabled": true
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn (demo)",
+      "repo": "https://github.com/example/linkedin-autoapply",
+      "path": "linkedin",
+      "status": "state/status.json",
+      "applications": "state/applications.jsonl",
+      "control": "state/control.json",
+      "enabled": false
+    }
+  ]
+}

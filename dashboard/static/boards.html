@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Board registry</title>
+<style>
+:root { color-scheme: light dark; --paper:#F3F5F2; --ink:#1B2230; --muted:#5E6B66; --grid:#D3DCD6; --bad:#A33A2B; --good:#2F6B48; }
+@media (prefers-color-scheme: dark) { :root { --paper:#13233B; --ink:#E6ECF2; --muted:#93A4B8; --grid:#2A3D5A; --bad:#E39A8C; --good:#8FD0A8; } }
+body { margin:0; background:var(--paper); color:var(--ink); font:14px/1.4 Bahnschrift, 'Segoe UI', sans-serif; }
+header { padding:16px 40px 8px; color:var(--muted); }
+header a { color:var(--ink); }
+h1 { margin:0; padding:0 40px; font-size:21px; }
+p { padding:0 40px; margin:8px 0; max-width:90ch; }
+table { margin:8px 40px 24px; border-collapse:collapse; width:calc(100% - 80px); }
+th, td { text-align:left; padding:6px 12px 6px 0; border-bottom:1px solid var(--grid); vertical-align:top; }
+th { color:var(--muted); font-weight:400; }
+a { color:var(--ink); }
+.small { color:var(--muted); font-size:12px; }
+.bad { color:var(--bad); }
+.good { color:var(--good); }
+</style>
+</head>
+<body>
+<header><a href="/">Back to the board</a></header>
+<h1>Board registry</h1>
+<p>Each applier is described in <code>boards.json</code> at the repo root. This page reads each board's status and
+application files only; it never imports or runs applier code. Missing repos and status files show as not installed.</p>
+<table>
+<thead><tr><th>Board</th><th>Repo</th><th>Installed</th><th>State</th><th>Last run</th><th>Applied today</th><th>Cap</th></tr></thead>
+<tbody id="rows"><tr><td colspan="7">Reading boards…</td></tr></tbody>
+</table>
+<p id="note" class="small"></p>
+<script>
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const when = v => v ? esc(String(v).slice(0, 19).replace('T', ' ')) : '—';
+function repoCell(b) {
+  if (/^https?:\/\//i.test(b.repo || '')) {
+    return `<a href="${esc(b.repo)}" target="_blank" rel="noopener noreferrer">${esc(b.repo.replace(/^https?:\/\//i, ''))}</a>`;
+  }
+  return esc(b.repo || '—');
+}
+function boardCell(b) {
+  const off = b.enabled ? '' : ' <span class="small">(disabled)</span>';
+  const msg = b.message ? `<div class="small">${esc(b.message)}</div>` : '';
+  return `<strong>${esc(b.name)}</strong> <span class="small">${esc(b.id)}</span>${off}${msg}`;
+}
+function render(data) {
+  const tbody = document.getElementById('rows');
+  const rows = data.boards || [];
+  if (!rows.length) {
+    tbody.innerHTML = '<tr><td colspan="7">No boards configured. Copy boards.example.json to boards.json.</td></tr>';
+  } else {
+    tbody.innerHTML = rows.map(b => `<tr>
+      <td>${boardCell(b)}</td>
+      <td>${repoCell(b)}</td>
+      <td class="${b.installed ? 'good' : 'bad'}">${b.installed ? 'installed' : 'not installed'}</td>
+      <td>${esc(b.state)}</td>
+      <td>${when(b.last_run)}</td>
+      <td>${b.applied_today_from === 'log'
+              ? esc(b.applied_today)
+              : b.applied_today_from === 'status'
+                ? esc(b.applied_today) + ' <span class="small">status</span>'
+                : '<span class="small">no log</span>'}</td>
+      <td>${b.cap == null ? '—' : esc(b.cap)}</td>
+    </tr>`).join('');
+  }
+  document.getElementById('note').textContent = 'Read ' + rows.length + ' board(s) at ' + (data.generated || '');
+}
+function load() {
+  fetch('/api/boards', {cache: 'no-store'})
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(render)
+    .catch(err => {
+      document.getElementById('rows').innerHTML = '<tr><td colspan="7" class="bad">Could not read boards: ' + esc(err.message) + '</td></tr>';
+    });
+}
+load();
+setInterval(load, 30000);
+</script>
+</body>
+</html>

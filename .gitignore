@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Local configuration and bot state (root of this checkout only)
+/config.json
+/boards.json
+/tracker_config.json
+/state/
+/logs/
+/profiles/
+/*.db
+/*.db-journal
+/*.xlsx
+/*.log
+/*.bak
+/*.tmp

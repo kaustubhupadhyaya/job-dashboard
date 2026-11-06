@@ -1,0 +1,24 @@
+{
+  "description": "Keyword->skill tag rules. Title matches weigh 3x, description matches 1x. Edit freely; the tracker re-tags on every sync.",
+  "rules": [
+    {"tag": "Data Engineering", "kw": ["data engineer", "data engineering", "data pipeline", "data pipelines", "etl", "elt", "data platform", "data warehouse", "data warehousing", "data modeling", "data modelling", "data quality", "data integration", "dwh"]},
+    {"tag": "Big Data", "kw": ["spark", "pyspark", "hadoop", "big data", "kafka", "databricks", "hive", "flink", "sqoop"]},
+    {"tag": "Cloud", "kw": ["aws", "amazon web services", "azure", "gcp", "google cloud", "cloud engineer", "cloud developer", "cloud architect", "s3", "lambda", "ec2", "redshift"]},
+    {"tag": "SQL/Database", "kw": ["sql", "postgres", "postgresql", "mysql", "oracle", "snowflake", "redshift", "database", " dba ", "nosql", "mongodb", "dynamodb", "bigquery"]},
+    {"tag": "Python", "kw": ["python", "pandas", "numpy", "django", "flask", "fastapi"]},
+    {"tag": "AI/ML", "kw": ["machine learning", "artificial intelligence", "deep learning", "nlp", "llm", "genai", "generative ai", "ai engineer", "ml engineer", "data scientist", "data science", "computer vision", "pytorch", "tensorflow"]},
+    {"tag": "DevOps", "kw": ["devops", "docker", "kubernetes", "k8s", "ci/cd", "cicd", "terraform", "jenkins", "airflow", "ansible", "gitlab", "github actions"]},
+    {"tag": "Orchestration", "kw": ["airflow", "dagster", "prefect", "luigi", "dbt", "control-m", "autosys"]},
+    {"tag": "Backend", "kw": ["backend", "back end", "back-end", "api developer", "rest api", "microservices", "java developer", "golang", "node.js", "nodejs", "spring boot"]},
+    {"tag": "Frontend", "kw": ["frontend", "front end", "front-end", "react", "angular", "vue", "javascript", "typescript", "html", "css", "ui developer"]},
+    {"tag": "Full Stack", "kw": ["full stack", "fullstack", "full-stack"]},
+    {"tag": "Testing/QA", "kw": ["test engineer", "qa engineer", "qa automation", "automation test", "selenium", "playwright", "test automation", "sdet", "quality assurance"]},
+    {"tag": "BI/Analytics", "kw": ["power bi", "tableau", "business intelligence", "analytics engineer", "data analyst", "looker", "qlik", "qlikview", "reporting analyst"]},
+    {"tag": "Mobile", "kw": ["android", "ios", "react native", "flutter", "mobile developer"]},
+    {"tag": "Security", "kw": ["security engineer", "cybersecurity", "soc analyst", "penetration", "infosec"]},
+    {"tag": "Networking", "kw": ["network engineer", "cisco", "ccna", "firewall", "network administrator"]},
+    {"tag": "Support/IT", "kw": ["technical support", "helpdesk", "help desk", "service desk", "it support", "desktop support"]},
+    {"tag": "Management", "kw": ["engineering manager", "project manager", "program manager", "scrum master", "team lead", "tech lead", "technical lead", "architect", "principal engineer", "head of", "director"]},
+    {"tag": "Internship", "kw": ["intern", "internship", "trainee", "fresher", "graduate engineer"]}
+  ]
+}

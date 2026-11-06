@@ -1,0 +1,7 @@
+{
+  "state": "dry_run",
+  "last_run": "2026-11-06T09:42:00+05:30",
+  "cap": 25,
+  "applied_today": 0,
+  "message": "Demo data. A dry run found 14 jobs and would apply to 3."
+}

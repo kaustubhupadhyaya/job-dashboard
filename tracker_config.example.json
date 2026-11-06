@@ -1,0 +1,27 @@
+{
+  "_comment": "Copy to tracker_config.json. Replace each path with your own checkout and report file.",
+  "track_from": "2026-09-10",
+  "xlsx_path": "~/GitHub/job_applications_tracker.xlsx",
+  "sources": {
+    "linkedin": {
+      "type": "linkedin_csv",
+      "path": "~/GitHub/FORKED_Auto_job_applier_linkedIn/all excels/all_applied_applications_history.csv",
+      "applied_statuses": ["Applied", "applied", "Applied (Easy Apply)"]
+    },
+    "naukri": {
+      "type": "naukri_sqlite",
+      "path": "~/GitHub/Naukri-autoapply-bot-for-claude/naukri_jobs.db",
+      "applied_statuses": ["applied", "applied (easy apply)"]
+    },
+    "instahyre-1": {
+      "type": "instahyre_sqlite",
+      "label": "Instahyre",
+      "path": "~/GitHub/job-tracker/state/instahyre_1.db"
+    },
+    "naukrigulf": {
+      "type": "gulf_sqlite",
+      "label": "NaukriGulf",
+      "path": "~/GitHub/job-tracker/state/naukrigulf_apply.db"
+    }
+  }
+}
