@@ -4,6 +4,10 @@ A local, read-only dashboard for job-application bots. It reads the files each b
 
 Standard library only, Python 3.11 or newer.
 
+## Case study
+
+[docs/case-study.md](docs/case-study.md) describes how the four appliers, the board registry, the resume refreshers, the daily window, and the watchdogs fit together, with the verified and unverified parts separated.
+
 ## Run the demo
 
 ```bash
